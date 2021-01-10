@@ -13,6 +13,7 @@ RUN apt-get update \
     # https://en.cppreference.com/w/cpp/compiler_support
     && apt-get -y install \
     g++-10 \
+    gdb \
     build-essential \
     cmake \
     git \
