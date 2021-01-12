@@ -30,6 +30,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     zsh \
     python3-pip
 
+# Install the latest version of CUDA 11.1
+# https://hub.docker.com/r/nvidia/cuda
+# https://gitlab.com/nvidia/container-images/cuda/blob/master/dist/11.1/ubuntu20.04-x86_64/runtime/Dockerfile
+ENV NCCL_VERSION 2.7.8
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    cuda-libraries-11-1=11.1.1-1 \
+    libnpp-11-1=11.1.2.301-1 \
+    cuda-nvtx-11-1=11.1.74-1 \
+    libcublas-11-1=11.3.0.106-1 \
+    libnccl2=$NCCL_VERSION-1+cuda11.1 \
+    && apt-mark hold libnccl2
+
 # Cleaning
 RUN apt-get autoremove -y \
     && apt-get clean -y \
