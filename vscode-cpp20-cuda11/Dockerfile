@@ -1,5 +1,5 @@
 # Base image: https://github.com/microsoft/vscode-dev-containers/tree/master/containers/ubuntu
-FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu
+FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu-20.04
 
 # Configurtion: https://pspdfkit.com/blog/2020/visual-studio-code-cpp-docker/
 ARG USERNAME=vscode
@@ -31,16 +31,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip
 
 # Install the latest version of CUDA 11.1
+# https://askubuntu.com/a/1282104
 # https://hub.docker.com/r/nvidia/cuda
 # https://gitlab.com/nvidia/container-images/cuda/blob/master/dist/11.1/ubuntu20.04-x86_64/runtime/Dockerfile
-ENV NCCL_VERSION 2.7.8
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    cuda-libraries-11-1=11.1.1-1 \
-    libnpp-11-1=11.1.2.301-1 \
-    cuda-nvtx-11-1=11.1.74-1 \
-    libcublas-11-1=11.3.0.106-1 \
-    libnccl2=$NCCL_VERSION-1+cuda11.1 \
-    && apt-mark hold libnccl2
+
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    rm -rf /var/lib/apt/lists/*
+RUN add-apt-repository ppa:graphics-drivers/ppa
+RUN apt-key adv --fetch-keys  http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub
+RUN bash -c 'echo "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 /" > /etc/apt/sources.list.d/cuda.list'
+RUN bash -c 'echo "deb http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu2004/x86_64 /" > /etc/apt/sources.list.d/cuda_learn.list'
+RUN apt update && apt install -f -y cuda cuda-drivers 
+# Once ready, set your path to point to CUDA binaries:
+RUN echo 'export PATH=/usr/local/cuda-11.2/bin${PATH:+:${PATH}}' >> $HOME/.bashrc
+
 
 # Cleaning
 RUN apt-get autoremove -y \

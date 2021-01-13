@@ -1,5 +1,5 @@
 # Base image: https://github.com/microsoft/vscode-dev-containers/tree/master/containers/ubuntu
-FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu
+FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu-20.04
 
 # Configurtion: https://pspdfkit.com/blog/2020/visual-studio-code-cpp-docker/
 ARG USERNAME=vscode
