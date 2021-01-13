@@ -31,7 +31,7 @@ jobs:
           file: ./vscode-cpp20/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: unum/devcontainers:vscode-cpp20t
+          tags: unum/devcontainers:vscode-cpp20
       -
         name: Build and push vscode-cpp20-cuda11
         uses: docker/build-push-action@v2
