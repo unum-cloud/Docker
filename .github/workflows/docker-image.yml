@@ -1,0 +1,43 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Publish as vscode-cpp20
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: unum/devcontainers
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: vscode-cpp20/Dockerfile
+        tags: "vscode-cpp20"
+
+    - name: Publish as vscode-cpp20-cuda11
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: unum/devcontainers
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: vscode-cpp20-cuda11/Dockerfile
+        tags: "vscode-cpp20-cuda11"
+
+    - name: Publish as jupyter-graphml
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: unum/devcontainers
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: jupyter-graphml/Dockerfile
+        tags: "jupyter-graphml"
