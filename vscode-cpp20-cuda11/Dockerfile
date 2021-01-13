@@ -42,7 +42,7 @@ RUN add-apt-repository ppa:graphics-drivers/ppa
 RUN apt-key adv --fetch-keys  http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub
 RUN bash -c 'echo "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 /" > /etc/apt/sources.list.d/cuda.list'
 RUN bash -c 'echo "deb http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu2004/x86_64 /" > /etc/apt/sources.list.d/cuda_learn.list'
-RUN apt update && apt install -f -y cuda cuda-drivers 
+RUN apt update && apt install -f -y cuda-11-2
 # Once ready, set your path to point to CUDA binaries:
 RUN echo 'export PATH=/usr/local/cuda-11.2/bin${PATH:+:${PATH}}' >> $HOME/.bashrc
 
