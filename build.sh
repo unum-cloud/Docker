@@ -1,3 +1,3 @@
-docker build --tag unum/devcontainers:cpp20 cpp20
-docker build --tag unum/devcontainers:cpp20cuda11 cpp20cuda11
-docker build --tag unum/devcontainers:graphml graphml
+docker build --tag unum/devcontainers:vscode-cpp20 vscode-cpp20
+docker build --tag unum/devcontainers:vscode-cpp20-cuda11 vscode-cpp20-cuda11
+docker build --tag unum/devcontainers:jupyter-graphml jupyter-graphml
