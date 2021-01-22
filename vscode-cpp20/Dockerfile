@@ -21,6 +21,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # https://en.cppreference.com/w/cpp/compiler_support
     g++-10 \
     gdb \
+    # A nice font for VSCode:
+    # https://blog.programster.org/ubuntu-install-fira-code-font
+    # https://github.com/tonsky/FiraCode
+    fonts-firacode \
     build-essential \
     cmake \
     git \
