@@ -11,7 +11,7 @@ A container for C++ 20 + CUDA 11 software development in a `.devcontainer` of **
 Like the [vscode-cpp20](#vscode-cpp20), it comes with GCC 10.2, GDB for debugging, modern CMake and Conan installed.
 It also features, CUDA, cuBLAS for linear algebra, NCCL2 for multi-GPU communications.
 
-## [jupyter-graphml](jupyter-graphml/Dockerfile)
+## [vscode-graphml](vscode-graphml/Dockerfile)
 
 A container for GraphML-related data-science workloads in **JupyterLab**. Comes with:
 
