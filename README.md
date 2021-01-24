@@ -1,4 +1,4 @@
-# DockerImages used in [Unum.am](https://unum.am)
+# Docker Images used in [Unum.am](https://unum.am)
 
 ## [vscode-cpp20](vscode-cpp20/Dockerfile)
 
