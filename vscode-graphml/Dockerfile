@@ -1,4 +1,4 @@
-FROM unum/devcontainers:vscode-cpp20-cuda11
+FROM unumam/vscode-cpp20-cuda11
 
 RUN apt-get update && apt-get -y install python3-pip
 

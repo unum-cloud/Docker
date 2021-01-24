@@ -1,5 +1,5 @@
 # Base image: https://github.com/microsoft/vscode-dev-containers/tree/master/containers/ubuntu
-FROM unum/devcontainers:vscode-cpp20
+FROM unumam/vscode-cpp20
 
 ENV DEBIAN_FRONTEND=noninteractive
 
