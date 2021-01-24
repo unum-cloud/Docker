@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # https://en.cppreference.com/w/cpp/compiler_support
     g++-10 \
     gdb \
+    software-properties-common \
     build-essential \
     cmake \
     git \
