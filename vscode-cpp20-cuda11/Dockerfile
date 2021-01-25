@@ -8,14 +8,14 @@ ENV DEBIAN_FRONTEND=noninteractive
 # https://hub.docker.com/r/nvidia/cuda
 # https://gitlab.com/nvidia/container-images/cuda/blob/master/dist/11.1/ubuntu20.04-x86_64/runtime/Dockerfile
 
-RUN apt-get update && \
-    apt-get install -y software-properties-common && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update 
 RUN add-apt-repository ppa:graphics-drivers/ppa
 RUN apt-key adv --fetch-keys  http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub
 RUN bash -c 'echo "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 /" > /etc/apt/sources.list.d/cuda.list'
 RUN bash -c 'echo "deb http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu2004/x86_64 /" > /etc/apt/sources.list.d/cuda_learn.list'
-RUN apt update && apt install -f -y cuda-11-2
+RUN apt update && apt install -f -y cuda-11-2 && apt-get autoremove -y \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/*
 # Once ready, set your path to point to CUDA binaries:
 RUN echo 'export PATH=/usr/local/cuda-11.2/bin${PATH:+:${PATH}}' >> $HOME/.bashrc
 
