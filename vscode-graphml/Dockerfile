@@ -35,3 +35,4 @@ RUN pip3 install \
     # https://jupyter.readthedocs.io/en/latest/install.html
     jupyterlab 
 
+LABEL org.opencontainers.image.source https://github.com/unumam/docker
