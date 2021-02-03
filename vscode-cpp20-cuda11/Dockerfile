@@ -9,8 +9,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 # https://gitlab.com/nvidia/container-images/cuda/blob/master/dist/11.1/ubuntu20.04-x86_64/runtime/Dockerfile
 
 RUN apt-get update 
-RUN add-apt-repository ppa:graphics-drivers/ppa
 RUN apt-key adv --fetch-keys  http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub
+RUN add-apt-repository ppa:graphics-drivers/ppa
 RUN bash -c 'echo "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 /" > /etc/apt/sources.list.d/cuda.list'
 RUN bash -c 'echo "deb http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu2004/x86_64 /" > /etc/apt/sources.list.d/cuda_learn.list'
 RUN apt update && apt install -f -y cuda-11-2 && apt-get autoremove -y \
